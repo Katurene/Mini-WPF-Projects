@@ -1,0 +1,79 @@
+﻿<Window x:Class="Lab9.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab9"
+        xmlns:inf="clr-namespace:Lab9.Infrastructure"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" FontFamily="Lucida Bright" FontSize="22">
+    <Window.Resources>
+        <inf:ImageSourceConverter x:Key="ImageConverter"/>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock MouseDown="TextBlock_MouseDown">Выберите группу:</TextBlock>
+            <ComboBox x:Name="cBoxGroup" Margin="0,10,10,10"
+                        DisplayMemberPath="CourseName"
+                        ItemsSource="{Binding}"
+                        SelectedValuePath="GroupId"
+                        SelectedIndex="0" KeyDown="CBoxGroup_KeyDown"/>
+            <Button Margin="10" Content="Добавить студента" Click="Button_Click"/>
+        </StackPanel>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="10,30,10,10">Начало занятий:</TextBlock>
+            <TextBlock Grid.Column="1" Text="{Binding ElementName=cBoxGroup,
+                    Path=SelectedItem.Commence,
+                    StringFormat={}{0:dd.MM.yyyy}}"
+                    Margin="0,30,0,0"/>
+            <TextBlock Margin="10,0,0,0" Grid.Row="1">Стоимость:</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="1"
+                    Text="{Binding ElementName=cBoxGroup,
+                    Path=SelectedItem.BasePrice,
+                    StringFormat={}{0} руб.}"/>
+        </Grid>
+        <!--<DataGrid x:Name="tempGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding}"/>-->
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2">
+
+            <ListBox Name="listBox" DataContext="{Binding ElementName=cBoxGroup,
+                    Path=SelectedItem}"
+                    ItemsSource="{Binding Path=Students}" KeyDown="ListBox_KeyDown">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Width="50" Source="{Binding Path=FileName,
+                                Converter={StaticResource ImageConverter}}"/>
+                            <StackPanel Grid.Column="1" >
+                                <TextBlock Text="{Binding Path=FullName}" Margin="30,0,0,0"/>
+                                <TextBlock Text="{Binding Path=DateOfBirth,
+                                    StringFormat={}{0:dd.MM.yyyy г.р.}}"
+                                    Margin="30,0,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+    </Grid>
+</Window>
+

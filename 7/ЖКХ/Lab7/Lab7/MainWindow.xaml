@@ -1,0 +1,38 @@
+﻿<Window x:Class="Lab7.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab7"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" FontSize="14" FontWeight="Bold" FontFamily="Tahoma">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Button Height ="50" Margin="5,10" Click="ButtonView_Click">Просмотреть</Button>
+            <Button Height ="50" Margin="5,10" Click="ButtonAdd_Click">Добавить</Button>
+            <Button Height ="50" Margin="5,10" Click="ButtonFind_Click">Найти</Button>
+            <Button Height ="50" Margin="5,10" Click="ButtonUpdate_Click">Изменить</Button>
+            <Button Height ="50" Margin="5,10" Click="ButtonDelete_Click">Удалить</Button>
+        </StackPanel>
+        <StackPanel x:Name="stackpanelPayer" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <Label Width="200" Margin="5,10">Плательщик</Label>
+                <TextBox Name="textBoxName" Width="200" Margin="5,10" Text="{Binding Path=Name}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="200" Margin="5,10">Счетчик холодной воды</Label>
+                <TextBox Name="textBoxHol" Width="200" Margin="5,10" Text="{Binding Path=Hol}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="200" Margin="5,10">Счетчик горячей воды</Label>
+                <TextBox Name="textBoxGor" Width="200" Margin="5,10" Text="{Binding Path=Gor}"></TextBox>
+            </StackPanel>
+            <ListBox x:Name="listBox" Height="278" Margin="0,0,-0.4,0" ItemsSource="{Binding}"></ListBox>
+        </StackPanel>
+    </Grid>
+
+</Window>

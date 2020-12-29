@@ -1,0 +1,84 @@
+﻿<Window x:Class="Lab9.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab9"
+        xmlns:inf="clr-namespace:Lab9.Infrastructure"
+        mc:Ignorable="d"
+         Title="Список задач по благоустройству территории УП ЖЭС-89" Height="450" Width="800" 
+         FontFamily="Lucida Bright" FontSize="18" Background="#FF92F4E4">
+    <Window.Resources>
+        <inf:ImageSourceConverter x:Key="ImageConverter"/>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel>
+            <TextBlock FontSize="16" FontWeight="Bold">Список работ по благоустройству территории</TextBlock>
+            <ComboBox x:Name="cBoxWork" Margin="0,10,10,10"
+                        DisplayMemberPath="TypeOfWork"
+                        ItemsSource="{Binding}"
+                        SelectedValuePath="WorkId"
+                        SelectedIndex="0" KeyDown="cBoxWork_KeyDown"/>
+            <Button Margin="10" Content="Назначить новую задачу" Click="ButtonAddWork_Click"/>
+            <Button Margin="10" Content="Добавить работника" Click="ButtonAddWorker_Click"/>
+        </StackPanel>
+        
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="10,30,10,10">Начало работ:</TextBlock>
+            <TextBlock Grid.Column="1" Text="{Binding ElementName=cBoxWork,
+                    Path=SelectedItem.Begin,
+                    StringFormat={}{0:dd.MM.yyyy}}"
+                    Margin="0,30,0,0"/>
+            <TextBlock Margin="10,0,0,0" Grid.Row="1">Смета:</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="1"
+                    Text="{Binding ElementName=cBoxWork,
+                    Path=SelectedItem.Estimate,
+                    StringFormat={}{0} руб.}"/>
+        </Grid>
+       
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2">
+
+            <ListBox Name="listBox"  DataContext="{Binding ElementName=cBoxWork,
+                    Path=SelectedItem}"
+                    ItemsSource="{Binding Path=Workers}" KeyDown="ListBox_KeyDown">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Width="50" Source="{Binding Path=FileName,
+                                Converter={StaticResource ImageConverter}}"/>
+                            <StackPanel Grid.Column="1" >
+                                <TextBlock Text="{Binding Path=FullName}" Margin="30,0,0,0"/>
+                                <TextBlock Text="{Binding Path=DateOfBirth,
+                                    StringFormat={}{0:dd.MM.yyyy г.р.}}"
+                                    Margin="30,0,0,0"/>
+                                <TextBlock Text="{Binding Path=Position}" Margin="30,0,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+    </Grid>
+</Window>

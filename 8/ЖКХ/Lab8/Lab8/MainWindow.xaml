@@ -1,0 +1,81 @@
+﻿<Window x:Class="Lab8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab8"
+        mc:Ignorable="d"
+        Title="Должники по оплате коммунальных услуг" Height="450" Width="800" Closing="Window_Closing" Background="#FFE8EEA0">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="6,10"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid x:Name="dGrid" Grid.Column="1" 
+                  AutoGenerateColumns="False"
+                  LoadingRow="dGrid_LoadingRow" RowHeaderWidth="20"
+                  DataGrid.IsReadOnly ="True"
+                  ItemsSource="{Binding}"
+                  Background="#FFE8EEA0" AlternatingRowBackground="#FFE8EEA0" FontSize="14">
+
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="Background" Value="#FFADBF82" />
+                    <Setter Property="Padding" Value="5 0" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+            <DataGrid.RowHeaderStyle>
+                <Style TargetType="DataGridRowHeader">
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="Background" Value="#FFADBF82" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </DataGrid.RowHeaderStyle>
+
+            <DataGrid.Columns>                
+                <DataGridTextColumn Header="Ф.И.О Плательщика" Binding="{Binding FullName}" Width="*">
+                    <DataGridTextColumn.CellStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>      
+                </DataGridTextColumn>
+                
+                <DataGridTextColumn Header="Улица" Binding="{Binding Street}"/>
+                <DataGridTextColumn Header="№ дома" Binding="{Binding House}"/>
+                <DataGridTextColumn Header="№ квартиры" Binding="{Binding Flat}"/>
+                <DataGridTextColumn Header="К оплате" Binding="{Binding Payment}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel x:Name="stackButtons">
+            <Button x:Name="btnAdd" Click="btnAdd_Click" FontSize="14" FontWeight="Bold" 
+                    BorderBrush="#FF382106" Margin="6,10,10,10" Padding="3" 
+                    Background="#FFADBF82" BorderThickness="2">
+                Добавить
+            </Button>
+            <Button x:Name="btnDelete" Click="btnDelete_Click" FontSize="14" FontWeight="Bold" 
+                    Background="#FFADBF82" Margin="6,10,10,10" BorderBrush="#FF382106" 
+                    Padding="3" BorderThickness="2">
+                Удалить
+            </Button>
+            <Button x:Name="btnEdit" Click="btnEdit_Click" FontSize="14" FontWeight="Bold" 
+                    Background="#FFADBF82" Margin="6,10,10,10" BorderBrush="#FF382106" 
+                    Padding="3" BorderThickness="2">
+                Редактировать
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</Window>

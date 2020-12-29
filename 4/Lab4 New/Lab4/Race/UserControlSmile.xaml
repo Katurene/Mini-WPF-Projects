@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="Race.UserControlSmile"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Race"
+             mc:Ignorable="d" d:DesignWidth="100" Height="105.968">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20 px"></RowDefinition>
+            <RowDefinition Height="16 px"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Name="InfoSpeed" FontSize="18" Grid.Row="0" FontStyle="Italic"/>
+        <TextBlock Name="InfoPosition" FontSize="14" Grid.Row="1" 
+                   FontFamily="Yu Gothic UI" FontWeight="Bold" Foreground="#FFE42A87" 
+                   FontStyle="Italic"/>
+        <Image Height="70" Width="100" Source="Resources/yummy.jpg" Grid.Row="2" 
+               MouseRightButtonDown="Image_MouseRightButtonDown" 
+               MouseLeftButtonDown="Image_MouseLeftButtonDown" />        
+    </Grid>    
+</UserControl>

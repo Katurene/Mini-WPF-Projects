@@ -1,0 +1,65 @@
+﻿<Window x:Class="Lab6.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab6"
+        mc:Ignorable="d"
+        Title="Window1" Height="330" Width="330" 
+        Left="450" Top="300"
+        FontFamily="Lucida Bright" FontSize="22" FontWeight="Bold">
+
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip"
+                Value="{Binding RelativeSource={RelativeSource Self},
+                    Path=(Validation.Errors)[0].ErrorContent}" />
+                    <Setter Property="Foreground" Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <StackPanel x:Name="stackPanel1" Orientation="Vertical" Background="#FFD3C265">
+        <StackPanel Orientation="Horizontal" Margin="20,10">
+            <Label Content="a =" Margin="20,10"/>
+            <TextBox Width="150" Margin="20,10">
+                <Binding Path="A">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule /><!--правило валидации-->
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="20,10">
+            <Label Content="b =" Margin="20,10"/>
+            <TextBox Width="150" Margin="20,10">
+                <Binding Path="B">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="20,10">
+            <Label Content="n =" Margin="20,10"/>
+            <TextBox Width="150" Margin="20,10">
+                <Binding Path="N">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content=" Принять " Margin="20,10" Click="Button_Click" FontWeight="Bold" 
+                    Background="#FF623821" Height="40" Width="134" Foreground="#FFD3C265"/>
+        </StackPanel>
+    </StackPanel>
+</Window>
+

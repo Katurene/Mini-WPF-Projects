@@ -1,0 +1,51 @@
+﻿<Window x:Class="Lab5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab5"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+    <DockPanel LastChildFill="True" ><!--докпанель позволяет примагничивать элементы к к-л краю-->
+        <Menu Height="25" DockPanel.Dock="Top" >
+            <MenuItem Header="Shape" Click="MenuItem_Click" />
+            <MenuItem Header="File"><!--две команды будут на одном айтеме--> 
+                <MenuItem Name="menuItemSave" Command="Save" Header="Save" />
+                <MenuItem x:Name="menuItemLoad" Header="Load" Command="Open"/>
+            </MenuItem>
+            <MenuItem x:Name="menuItemHelp" Header="Help" Command="Help"/>
+            <MenuItem Name="menuItemExit"  Header="Exit" Command="Close" />
+        </Menu>
+
+        <ToolBar Height="35" VerticalAlignment="Top"  DockPanel.Dock="Top">
+            <Button x:Name="buttonShape" Click="MenuItem_Click">
+                <Image Source = "Resourses\shape.png"/>
+            </Button>
+            <Button x:Name="buttonLoad" Command="Open">
+                <Image Source = "Resourses\load.png"/>
+            </Button>
+            <Button x:Name="buttonSave" Command="Save"><!--команды к-л часто исп действия-->
+                <Image Source = "Resourses\save.png"/>
+            </Button>
+            <Button x:Name="buttonHelp" Command="Help">
+                <Image Source = "Resourses\help.png"/>
+            </Button>
+            <Button x:Name="buttonExit" Command="Close">
+                <Image Source = "Resourses\exit.png"/>
+            </Button>
+        </ToolBar>
+
+        <StatusBar DockPanel.Dock="Bottom" Height="25">
+            <StatusBarItem>
+                <TextBlock Name="textBlockCursorPosition" />
+            </StatusBarItem>
+        </StatusBar>
+        
+        <Canvas x:Name="canvas" Background ="Beige" 
+                MouseMove="canvas_MouseMove" 
+                MouseDown="canvas_MouseDown"/>
+
+    </DockPanel>
+
+</Window>

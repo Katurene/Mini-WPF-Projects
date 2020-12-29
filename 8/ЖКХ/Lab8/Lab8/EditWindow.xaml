@@ -1,0 +1,50 @@
+﻿<Window x:Class="Lab8.EditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab8"
+        mc:Ignorable="d"
+        Title="EditWindow" Height="453.2" Width="646.4" FontSize="16" FontWeight="Bold" Background="#FFE8EEA0">
+    <Grid x:Name="grid" >
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Редактирование данных" HorizontalAlignment="Center"
+               Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="20" 
+               VerticalAlignment="Center" BorderThickness="1" Background="{x:Null}"/>
+        <Label Content="Ф.И.О. Плательщика" Grid.Row="1" VerticalAlignment="Center" 
+               UseLayoutRounding="False" BorderThickness="0"/>
+        <TextBox x:Name="textBoxName" Text="{Binding Path=FullName}"
+                 Grid.Row="1" Grid.Column="1" Margin="0,5"/>
+        <Label Content="Улица" Grid.Row="2" VerticalAlignment="Center"/>
+        <TextBox x:Name="textBoxStreet" Text="{Binding Path=Street}"
+                 Grid.Row="2" Grid.Column="1" Margin="0,5"/>
+        <Label Content="№ Дома" Grid.Row="3" VerticalAlignment="Center"/>
+        <TextBox x:Name="textBoxHouse" Text="{Binding Path=House}"
+                 Grid.Row="3" Grid.Column="1" Margin="0,5"/>
+        <Label Content="№ Квартиры" Grid.Row="4" VerticalAlignment="Center"/>
+        <TextBox x:Name="textBoxFlat" Text="{Binding Path=Flat}"
+                 Grid.Row="4" Grid.Column="1" Margin="0,5"/>
+        <Label Content="Сумма к оплате" Grid.Row="5" VerticalAlignment="Center"/>
+        <TextBox x:Name="textBoxPayment" Text="{Binding Path=Payment}"
+                 Grid.Row="5" Grid.Column="1" Margin="0,5,0,0"/>
+        
+        <Button Content="OK" Grid.Row="6" Grid.Column="0" Margin="25 15" 
+                Click="ButtonOK_Click" Background="#FFADBF82" 
+                BorderBrush="#FF382106" BorderThickness="2"/>
+        <Button Content="Cancel" Grid.Row="6" Grid.Column="1" Margin="25 15" 
+                Click="ButtonCancel_Click" Background="#FFADBF82" 
+                BorderBrush="#FF382106" BorderThickness="2"/>
+    </Grid>
+</Window>

@@ -1,0 +1,44 @@
+﻿<Window x:Class="Lab5.WindowShape"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab5"
+        mc:Ignorable="d"
+        Title="WindowShape" Height="272.4" Width="406.4" FontSize="16" FontWeight="Bold">
+    <Grid x:Name="grid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="150*"/>
+        </Grid.ColumnDefinitions>
+        <!--надо задать имя чтоб в привязке не было ошибки-->
+
+        <StackPanel Orientation="Vertical" Grid.ColumnSpan="2" Margin="0,0,-0.4,-0.4">
+            <StackPanel Orientation="Horizontal">
+                <Label Margin="20,5">Цвет линий</Label>
+                <ComboBox x:Name="comboBoxFore" Width="150" Margin="20,5"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Margin="20,5">Цвет фона</Label>
+                <ComboBox x:Name="comboBoxBack" Width="150" Margin="20,5"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Margin="20,5">Толщина линий</Label>
+                <TextBox x:Name="textBoxWidth" 
+                         Text="{Binding Path=Width}"
+                         Width="93" Height="33"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"><!--сдесь создаются 2 стандарт кнопки ОК и Отмена-->
+                <Button IsDefault="True" 
+                        MinWidth="100" Margin="20,5" 
+                        Click="Button_Click">OK</Button>
+                <Button IsCancel="True" MinWidth="100" 
+                        Margin="20,5" >Отмена</Button>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Window>

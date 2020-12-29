@@ -1,0 +1,59 @@
+﻿<Window x:Class="Calc.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calc"
+        mc:Ignorable="d"
+        Title="Калькулятор" Height="350" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Column="0" Grid.Row="1" Content="C" FontFamily="MV Boli" FontSize="24" Grid.ColumnSpan="2" Margin="0,0,73.2,0.4" Height="53" VerticalAlignment="Bottom" Click="ButtonClean_Click"  />
+        <Button Grid.Column="1" Grid.Row="1" Content="&lt;-" FontFamily="MV Boli" FontSize="24" Margin="0.4,0,0.2,0.4" Height="53" VerticalAlignment="Bottom" RenderTransformOrigin="0.501,0.504" Click="ButtonDelete_Click"  />
+        <Button Grid.Column="2" Grid.Row="1" Content="*" FontFamily="MV Boli" FontSize="24" RenderTransformOrigin="0.5,0.5" Click="ButtonOper_Click" />
+        <Button Grid.Column="3" Grid.Row="1" Content="/" FontFamily="MV Boli" FontSize="24" Click="ButtonOper_Click"/>
+        <Button Grid.Column="0" Grid.Row="2" Content="7" FontFamily="MV Boli" FontSize="24" Click="ButtonNumber_Click" />
+        <Button Grid.Column="1" Grid.Row="2" Content="8" FontFamily="MV Boli" FontSize="24" Click="ButtonNumber_Click"/>
+        <Button Grid.Column="2" Grid.Row="2" Content="9" FontFamily="MV Boli" FontSize="24" Click="ButtonNumber_Click"/>
+        <Button Grid.Column="3" Grid.Row="2" Content="-" FontFamily="MV Boli" FontSize="24" Click="ButtonOper_Click"/>
+        <Button Grid.Column="0" Grid.Row="3" Content="4" FontFamily="MV Boli" FontSize="24" Click="ButtonNumber_Click"/>
+        <Button Grid.Column="1" Grid.Row="3" Content="5" FontFamily="MV Boli" FontSize="24" Click="ButtonNumber_Click"/>
+        <Button Grid.Column="2" Grid.Row="3" Content="6" FontFamily="MV Boli" FontSize="24" Click="ButtonNumber_Click"/>
+        <Button Grid.Column="3" Grid.Row="3" Content="+" FontFamily="MV Boli" FontSize="24" Click="ButtonOper_Click"/>
+        <Button Grid.Column="0" Grid.Row="4" Content="1" FontFamily="MV Boli" FontSize="24" Click="ButtonNumber_Click"/>
+        <Button Grid.Column="1" Grid.Row="4" Content="2" FontFamily="MV Boli" FontSize="24" Click="ButtonNumber_Click"/>
+        <Button Grid.Column="2" Grid.Row="4" Content="3" FontFamily="MV Boli" FontSize="24" Click="ButtonNumber_Click"/>
+        <Button Grid.Column="3" Grid.Row="4" Content="=" Grid.RowSpan="3" FontFamily="MV Boli" FontSize="24" Click="Button_Click_1"/>
+        <Button Grid.Column="0" Grid.Row="5" Content="0" Grid.ColumnSpan="2" FontFamily="MV Boli" FontSize="24" Click="ButtonNumber_Click"/>
+        <Button Grid.Column="2" Grid.Row="5" Content="," FontFamily="MV Boli" FontSize="24" Click="Button_Click"  />
+        <Button Grid.Column="0" Grid.Row="6" Content="sin" FontFamily="MV Boli" FontSize="24" Click="ButtonOper_Click"/>
+        <Button Grid.Column="1" Grid.Row="6" Content="cos" FontFamily="MV Boli" FontSize="24" Click="ButtonOper_Click"/>
+        <Button Grid.Column="2" Grid.Row="6" Content="tg" FontFamily="MV Boli" FontSize="24" Click="ButtonOper_Click"/>
+        
+        <TextBox x:Name="textBox" Grid.Row="0" 
+                 Grid.ColumnSpan="4" 
+                 Text="0" 
+                 FontFamily="MV Boli" 
+                 FontSize="24" 
+                 HorizontalAlignment="Right"
+                 VerticalAlignment="Center"
+                 Padding="10 0 10 0"/>
+
+    </Grid>
+</Window>
